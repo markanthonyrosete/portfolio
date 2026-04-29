@@ -134,6 +134,55 @@
 		$(".fh5co-loader").fadeOut("slow");
 	};
 
+	// Loading page
+	var showModal = function() {
+		$('.backoffice-js').on('click', function(event){
+			event.preventDefault();
+			document.getElementById("modalTitle").textContent = " Backoffice";
+			document.getElementById("modalContent").innerHTML = "● Call back of Daily Transactions<br/>● Call back of Daily Transactions (TELLER)<br/>● Scanning of Backoffice Daily Transactions<br/>● Filing of Daily Transactions<br/>● Routing of Transactions for Signature<br/>● Assist CCTV Backup";
+			document.getElementById("modal").style.display = "flex";
+		});
+
+		$('.salary-js').on('click', function(event){
+			event.preventDefault();
+			document.getElementById("modalTitle").textContent = " Salary Loan";
+			document.getElementById("modalContent").innerHTML = "● Scanning of Daily Transactions<br/>● Scanning of Client’s Application Documents<br/> ● Filing of SL Client’s Documents; stamping “CLOSED” to mature/finished loans<br/>● Surveying Clients";
+			document.getElementById("modal").style.display = "flex";
+		});
+
+		$('.new-js').on('click', function(event){
+			event.preventDefault();
+			document.getElementById("modalTitle").textContent = " New Accounts";
+			document.getElementById("modalContent").innerHTML = "● Assisting Clients<br/>● ATM Cards Release<br/>● Filing of New Accounts/Dormant<br/>● Encoding of New Accounts Monitoring<br/>● Filing of Various Reports<br/>● EBS Records Checking<br/>● Scanning/Photocopying of Docs<br/>● Grooming New Accounts Docs<br/>● INTEGRAL 360";
+			document.getElementById("modal").style.display = "flex";
+		});
+
+		$('.cashier-js').on('click', function(event){
+			event.preventDefault();
+			document.getElementById("modalTitle").textContent = " Cashier";
+			document.getElementById("modalContent").innerHTML = "● Call back (PAYROLL)<br/>● Scanning of New Accounts Docs; Closed Accounts<br/>● EBS Records Checking<br/>● ATM Cards Release<br/>● Segregation of Closed Signature Cards<br/>● Sorting of Customer Records";
+			document.getElementById("modal").style.display = "flex";
+		});
+
+		$('.head-js').on('click', function(event){
+			event.preventDefault();
+			document.getElementById("modalTitle").textContent = " Branch Head";
+			document.getElementById("modalContent").innerHTML = "● Checking of CIFF Thru AB2 and ECI<br/>● Customer Survey-Lobby";
+			document.getElementById("modal").style.display = "flex";
+		});
+
+	};
+
+	var closeModal = function() {
+		$('.close-js').on('click', function(event){
+			
+			event.preventDefault();
+
+		  	document.getElementById("modal").style.display = "none";
+		});
+
+	};
+
 	
 	$(function(){
 		contentWayPoint();
@@ -143,6 +192,8 @@
 		parallax();
 		// pieChart();
 		skillsWayPoint();
+		showModal();
+		closeModal();
 	});
 
 

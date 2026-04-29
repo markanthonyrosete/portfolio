@@ -750,7 +750,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .work .desc span {
   display: block;
-  color: #999999;
+  color: #606060;
   font-size: 14px;
   -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
   transition: transform 0.3s, opacity 0.3s;
@@ -1293,5 +1293,42 @@ input[type="text"] {
 .js .animate-box {
   opacity: 0;
 }
+
+.text {
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 4;
+           line-clamp: 4; 
+   -webkit-box-orient: vertical;
+}
+
+.cashier-text {
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+           line-clamp: 3; 
+   -webkit-box-orient: vertical;
+}
+
+  .modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    justify-content:center;
+    align-items:center;
+  }
+
+.modal-box{
+    background:#fff;
+    padding:20px;
+    margin: 20px;
+    border-radius:10px;
+    width:400px;
+  }
+
+  .close {
+    font-size: 16px !important;
+  }
 
 /*# sourceMappingURL=style.css.map */
