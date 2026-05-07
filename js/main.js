@@ -1,200 +1,364 @@
-;(function () {
-	
-	'use strict';
+/* ===================================================================
+ * Luther 1.0.0 - Main JS
+ *
+ * ------------------------------------------------------------------- */
 
-	var isMobile = {
-		Android: function() {
-			return navigator.userAgent.match(/Android/i);
-		},
-			BlackBerry: function() {
-			return navigator.userAgent.match(/BlackBerry/i);
-		},
-			iOS: function() {
-			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-		},
-			Opera: function() {
-			return navigator.userAgent.match(/Opera Mini/i);
-		},
-			Windows: function() {
-			return navigator.userAgent.match(/IEMobile/i);
-		},
-			any: function() {
-			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-		}
-	};
+(function(html) {
 
-	
-	var fullHeight = function() {
+    "use strict";
 
-		if ( !isMobile.any() ) {
-			$('.js-fullheight').css('height', $(window).height());
-			$(window).resize(function(){
-				$('.js-fullheight').css('height', $(window).height());
-			});
-		}
-	};
-
-	// Parallax
-	var parallax = function() {
-		$(window).stellar();
-	};
-
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.animate-box').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
-				
-				i++;
-
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-
-					$('body .animate-box.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn animated-fast');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated-fast');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated-fast');
-							} else {
-								el.addClass('fadeInUp animated-fast');
-							}
-
-							el.removeClass('item-animate');
-						},  k * 100, 'easeInOutExpo' );
-					});
-					
-				}, 50);
-				
-			}
-
-		} , { offset: '85%' } );
-	};
+    html.className = html.className.replace(/\bno-js\b/g, '') + ' js ';
 
 
 
-	var goToTop = function() {
-
-		$('.js-gotop').on('click', function(event){
-			
-			event.preventDefault();
-
-			$('html, body').animate({
-				scrollTop: $('html').offset().top
-			}, 500, 'easeInOutExpo');
-			
-			return false;
-		});
-
-		$(window).scroll(function(){
-
-			var $win = $(window);
-			if ($win.scrollTop() > 200) {
-				$('.js-top').addClass('active');
-			} else {
-				$('.js-top').removeClass('active');
-			}
-
-		});
-	
-	};
-
-	var pieChart = function() {
-		$('.chart').easyPieChart({
-			scaleColor: false,
-			lineWidth: 4,
-			lineCap: 'butt',
-			barColor: '#FF9000',
-			trackColor:	"#f5f5f5",
-			size: 160,
-			animate: 1000
-		});
-	};
-
-	var skillsWayPoint = function() {
-		if ($('#fh5co-skills').length > 0 ) {
-			$('#fh5co-skills').waypoint( function( direction ) {
-										
-				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-					setTimeout( pieChart , 400);					
-					$(this.element).addClass('animated');
-				}
-			} , { offset: '90%' } );
-		}
-
-	};
-
-
-	// Loading page
-	var loaderPage = function() {
-		$(".fh5co-loader").fadeOut("slow");
-	};
-
-	// Loading page
-	var showModal = function() {
-		$('.backoffice-js').on('click', function(event){
-			event.preventDefault();
-			document.getElementById("modalTitle").textContent = " Backoffice";
-			document.getElementById("modalContent").innerHTML = "● Call back of Daily Transactions<br/>● Call back of Daily Transactions (TELLER)<br/>● Scanning of Backoffice Daily Transactions<br/>● Filing of Daily Transactions<br/>● Routing of Transactions for Signature<br/>● Assist CCTV Backup";
-			document.getElementById("modal").style.display = "flex";
-		});
-
-		$('.salary-js').on('click', function(event){
-			event.preventDefault();
-			document.getElementById("modalTitle").textContent = " Salary Loan";
-			document.getElementById("modalContent").innerHTML = "● Scanning of Daily Transactions<br/>● Scanning of Client’s Application Documents<br/> ● Filing of SL Client’s Documents; stamping “CLOSED” to mature/finished loans<br/>● Surveying Clients";
-			document.getElementById("modal").style.display = "flex";
-		});
-
-		$('.new-js').on('click', function(event){
-			event.preventDefault();
-			document.getElementById("modalTitle").textContent = " New Accounts";
-			document.getElementById("modalContent").innerHTML = "● Assisting Clients<br/>● ATM Cards Release<br/>● Filing of New Accounts/Dormant<br/>● Encoding of New Accounts Monitoring<br/>● Filing of Various Reports<br/>● EBS Records Checking<br/>● Scanning/Photocopying of Docs<br/>● Grooming New Accounts Docs<br/>● INTEGRAL 360";
-			document.getElementById("modal").style.display = "flex";
-		});
-
-		$('.cashier-js').on('click', function(event){
-			event.preventDefault();
-			document.getElementById("modalTitle").textContent = " Cashier";
-			document.getElementById("modalContent").innerHTML = "● Call back (PAYROLL)<br/>● Scanning of New Accounts Docs; Closed Accounts<br/>● EBS Records Checking<br/>● ATM Cards Release<br/>● Segregation of Closed Signature Cards<br/>● Sorting of Customer Records";
-			document.getElementById("modal").style.display = "flex";
-		});
-
-		$('.head-js').on('click', function(event){
-			event.preventDefault();
-			document.getElementById("modalTitle").textContent = " Branch Head";
-			document.getElementById("modalContent").innerHTML = "● Checking of CIFF Thru AB2 and ECI<br/>● Customer Survey-Lobby";
-			document.getElementById("modal").style.display = "flex";
-		});
-
-	};
-
-	var closeModal = function() {
-		$('.close-js').on('click', function(event){
-			
-			event.preventDefault();
-
-		  	document.getElementById("modal").style.display = "none";
-		});
-
-	};
-
-	
-	$(function(){
-		contentWayPoint();
-		goToTop();
-		loaderPage();
-		fullHeight();
-		parallax();
-		// pieChart();
-		skillsWayPoint();
-		showModal();
-		closeModal();
-	});
+   /* Animations
+    * -------------------------------------------------- */
+    const tl = anime.timeline( {
+        easing: 'easeInOutCubic',
+        duration: 800,
+        autoplay: false
+    })
+    .add({
+        targets: '#loader',
+        opacity: 0,
+        duration: 1000,
+        begin: function(anim) {
+            window.scrollTo(0, 0);
+        }
+    })
+    .add({
+        targets: '#preloader',
+        opacity: 0,
+        complete: function(anim) {
+            document.querySelector("#preloader").style.visibility = "hidden";
+            document.querySelector("#preloader").style.display = "none";
+        }
+    })
+    .add({
+        targets: '.s-header',
+        translateY: [-100, 0],
+        opacity: [0, 1]
+    }, '-=200')
+    .add({
+        targets: [ '.s-intro .text-pretitle', '.s-intro .text-huge-title'],
+        translateX: [100, 0],
+        opacity: [0, 1],
+        delay: anime.stagger(400)
+    })
+    .add({
+        targets: '.circles span',
+        keyframes: [
+            {opacity: [0, .3]},
+            {opacity: [.3, .1], delay: anime.stagger(100, {direction: 'reverse'})}
+        ],
+        delay: anime.stagger(100, {direction: 'reverse'})
+    })
+    .add({
+        targets: '.intro-social li',
+        translateX: [-50, 0],
+        opacity: [0, 1],
+        delay: anime.stagger(100, {direction: 'reverse'})
+    })
+    .add({
+        targets: '.intro-scrolldown',
+        translateY: [100, 0],
+        opacity: [0, 1]
+    }, '-=800');
 
 
-}());
+
+   /* Preloader
+    * -------------------------------------------------- */
+    const ssPreloader = function() {
+
+        const preloader = document.querySelector('#preloader');
+        if (!preloader) return;
+        
+        window.addEventListener('load', function() {
+            document.querySelector('html').classList.remove('ss-preload');
+            document.querySelector('html').classList.add('ss-loaded');
+
+            document.querySelectorAll('.ss-animated').forEach(function(item){
+                item.classList.remove('ss-animated');
+            });
+
+            tl.play();
+        });
+
+        // force page scroll position to top at page refresh
+        // window.addEventListener('beforeunload' , function () {
+        //     // window.scrollTo(0, 0);
+        // });
+
+    }; // end ssPreloader
+
+
+   /* Mobile Menu
+    * ---------------------------------------------------- */ 
+    const ssMobileMenu = function() {
+
+        const toggleButton = document.querySelector('.mobile-menu-toggle');
+        const mainNavWrap = document.querySelector('.main-nav-wrap');
+        const siteBody = document.querySelector("body");
+
+        if (!(toggleButton && mainNavWrap)) return;
+
+        toggleButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            toggleButton.classList.toggle('is-clicked');
+            siteBody.classList.toggle('menu-is-open');
+        });
+
+        mainNavWrap.querySelectorAll('.main-nav a').forEach(function(link) {
+            link.addEventListener("click", function(event) {
+
+                // at 800px and below
+                if (window.matchMedia('(max-width: 800px)').matches) {
+                    toggleButton.classList.toggle('is-clicked');
+                    siteBody.classList.toggle('menu-is-open');
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+
+            // above 800px
+            if (window.matchMedia('(min-width: 801px)').matches) {
+                if (siteBody.classList.contains('menu-is-open')) siteBody.classList.remove('menu-is-open');
+                if (toggleButton.classList.contains("is-clicked")) toggleButton.classList.remove("is-clicked");
+            }
+        });
+
+    }; // end ssMobileMenu
+
+
+   /* Highlight active menu link on pagescroll
+    * ------------------------------------------------------ */
+    const ssScrollSpy = function() {
+
+        const sections = document.querySelectorAll(".target-section");
+
+        // Add an event listener listening for scroll
+        window.addEventListener("scroll", navHighlight);
+
+        function navHighlight() {
+        
+            // Get current scroll position
+            let scrollY = window.pageYOffset;
+        
+            // Loop through sections to get height(including padding and border), 
+            // top and ID values for each
+            sections.forEach(function(current) {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 50;
+                const sectionId = current.getAttribute("id");
+            
+               /* If our current scroll position enters the space where current section 
+                * on screen is, add .current class to parent element(li) of the thecorresponding 
+                * navigation link, else remove it. To know which link is active, we use 
+                * sectionId variable we are getting while looping through sections as 
+                * an selector
+                */
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelector(".main-nav a[href*=" + sectionId + "]").parentNode.classList.add("current");
+                } else {
+                    document.querySelector(".main-nav a[href*=" + sectionId + "]").parentNode.classList.remove("current");
+                }
+            });
+        }
+
+    }; // end ssScrollSpy
+
+
+   /* Animate elements if in viewport
+    * ------------------------------------------------------ */
+    const ssViewAnimate = function() {
+
+        const blocks = document.querySelectorAll("[data-animate-block]");
+
+        window.addEventListener("scroll", viewportAnimation);
+
+        function viewportAnimation() {
+
+            let scrollY = window.pageYOffset;
+
+            blocks.forEach(function(current) {
+
+                const viewportHeight = window.innerHeight;
+                const triggerTop = (current.offsetTop + (viewportHeight * .2)) - viewportHeight;
+                const blockHeight = current.offsetHeight;
+                const blockSpace = triggerTop + blockHeight;
+                const inView = scrollY > triggerTop && scrollY <= blockSpace;
+                const isAnimated = current.classList.contains("ss-animated");
+
+                if (inView && (!isAnimated)) {
+                    anime({
+                        targets: current.querySelectorAll("[data-animate-el]"),
+                        opacity: [0, 1],
+                        translateY: [100, 0],
+                        delay: anime.stagger(400, {start: 200}),
+                        duration: 800,
+                        easing: 'easeInOutCubic',
+                        begin: function(anim) {
+                            current.classList.add("ss-animated");
+                        }
+                    });
+                }
+            });
+        }
+
+    }; // end ssViewAnimate
+
+
+   /* Swiper
+    * ------------------------------------------------------ */ 
+    const ssSwiper = function() {
+
+        const mySwiper = new Swiper('.swiper-container', {
+
+            slidesPerView: 1,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                // when window width is > 400px
+                401: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is > 800px
+                801: {
+                    slidesPerView: 2,
+                    spaceBetween: 32
+                },
+                // when window width is > 1200px
+                1201: {
+                    slidesPerView: 2,
+                    spaceBetween: 80
+                }
+            }
+         });
+
+    }; // end ssSwiper
+
+
+   /* Lightbox
+    * ------------------------------------------------------ */
+    const ssLightbox = function() {
+
+        const folioLinks = document.querySelectorAll('.folio-list__item-link');
+        const modals = [];
+
+        folioLinks.forEach(function(link) {
+            let modalbox = link.getAttribute('href');
+            let instance = basicLightbox.create(
+                document.querySelector(modalbox),
+                {
+                    onShow: function(instance) {
+                        //detect Escape key press
+                        document.addEventListener("keydown", function(event) {
+                            event = event || window.event;
+                            if (event.keyCode === 27) {
+                                instance.close();
+                            }
+                        });
+                    }
+                }
+            )
+            modals.push(instance);
+        });
+
+        folioLinks.forEach(function(link, index) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                modals[index].show();
+            });
+        });
+
+    };  // end ssLightbox
+
+
+   /* Alert boxes
+    * ------------------------------------------------------ */
+    const ssAlertBoxes = function() {
+
+        const boxes = document.querySelectorAll('.alert-box');
+  
+        boxes.forEach(function(box){
+
+            box.addEventListener('click', function(event) {
+                if (event.target.matches(".alert-box__close")) {
+                    event.stopPropagation();
+                    event.target.parentElement.classList.add("hideit");
+
+                    setTimeout(function(){
+                        box.style.display = "none";
+                    }, 500)
+                }    
+            });
+
+        })
+
+    }; // end ssAlertBoxes
+
+
+   /* Smoothscroll
+    * ------------------------------------------------------ */
+    const ssMoveTo = function(){
+
+        const easeFunctions = {
+            easeInQuad: function (t, b, c, d) {
+                t /= d;
+                return c * t * t + b;
+            },
+            easeOutQuad: function (t, b, c, d) {
+                t /= d;
+                return -c * t* (t - 2) + b;
+            },
+            easeInOutQuad: function (t, b, c, d) {
+                t /= d/2;
+                if (t < 1) return c/2*t*t + b;
+                t--;
+                return -c/2 * (t*(t-2) - 1) + b;
+            },
+            easeInOutCubic: function (t, b, c, d) {
+                t /= d/2;
+                if (t < 1) return c/2*t*t*t + b;
+                t -= 2;
+                return c/2*(t*t*t + 2) + b;
+            }
+        }
+
+        const triggers = document.querySelectorAll('.smoothscroll');
+        
+        const moveTo = new MoveTo({
+            tolerance: 0,
+            duration: 1200,
+            easing: 'easeInOutCubic',
+            container: window
+        }, easeFunctions);
+
+        triggers.forEach(function(trigger) {
+            moveTo.registerTrigger(trigger);
+        });
+
+    }; // end ssMoveTo
+
+
+   /* Initialize
+    * ------------------------------------------------------ */
+    (function ssInit() {
+
+        ssPreloader();
+        ssMobileMenu();
+        ssScrollSpy();
+        ssViewAnimate();
+        ssSwiper();
+        ssLightbox();
+        ssAlertBoxes();
+        ssMoveTo();
+
+    })();
+
+})(document.documentElement);
