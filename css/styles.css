@@ -1299,7 +1299,7 @@ a:active {
 /* headings
  */
 h1, h2, h3, h4, h5, h6, 
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .h5, .h6, .company-title {
     font-family            : var(--font-2);
     font-weight            : 400;
     color                  : var(--color-text-dark);
@@ -1334,7 +1334,7 @@ h1, .h1 {
         line-height : calc(1.625 * var(--space));
     }
 }
-h2, .h2 {
+h2, .h2, .company-title {
     font-size   : var(--text-xxl);
     line-height : var(--vspace-1_5);
 }
@@ -4251,3 +4251,54 @@ img.u-pull-left {
 .acknowledgement {
     padding-bottom: var(--vspace-3);
 }
+
+.modal-image {
+    object-position: top;
+}
+.chapter-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chapter-title {
+    color: var(--color-1);
+}
+
+.intro {
+    display: none;
+}
+
+.chapter-heading:hover p{
+    color : var(--color-1);
+}
+
+.company-img{
+    height: 30vh;
+    object-fit: cover;
+}
+
+.expi-img {
+   object-fit: cover; 
+}
+
+.company-img-container {
+    justify-content: center;
+    display: flex;
+}
+
+.mission-vision{
+    padding-bottom: 14px;
+    font-style: italic;
+}
+
+.org-struc-img{
+    height: 50vh;
+    object-fit: cover;
+}
+
+.chev {
+    transform: scaleY(1); 
+    /*transform: scaleY(-1); flor flipped*/ 
+}
+

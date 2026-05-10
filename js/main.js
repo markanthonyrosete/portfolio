@@ -278,6 +278,42 @@
 
     };  // end ssLightbox
 
+   /* Collapsible chapters
+    * ------------------------------------------------------ */
+    const collapsibleChapters = function() {
+        var chapter1 = document.getElementById('chapter-1');
+
+        chapter1.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("intro-text");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var chapter2 = document.getElementById('chapter-2');
+
+        chapter2.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("comp-profile-text");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var chapter3 = document.getElementById('chapter-3');
+
+        chapter3.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("expi-text");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+       var chapter4 = document.getElementById('chapter-4');
+
+        chapter4.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("assessment-text");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+    }
+
 
    /* Alert boxes
     * ------------------------------------------------------ */
@@ -358,6 +394,7 @@
         ssLightbox();
         ssAlertBoxes();
         ssMoveTo();
+        collapsibleChapters();
 
     })();
 
