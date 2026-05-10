@@ -4294,11 +4294,33 @@ img.u-pull-left {
 
 .org-struc-img{
     height: 50vh;
-    object-fit: cover;
+    /*object-fit: cover;*/
 }
 
 .chev {
     transform: scaleY(1); 
-    /*transform: scaleY(-1); flor flipped*/ 
+    /*transform: scaleY(-1); for flipped*/ 
 }
+
+.eval-img{
+    height: 70vh;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

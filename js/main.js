@@ -312,7 +312,68 @@
             var content = document.getElementById("assessment-text");
             content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
         };
-    }
+    };
+
+    /* Collapsible appendices
+    * ------------------------------------------------------ */
+    const collapsibleAppendices = function() {
+        var appendixA = document.getElementById('appendix-a');
+
+        appendixA.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-a-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var appendixB = document.getElementById('appendix-b');
+
+        appendixB.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-b-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var appendixC = document.getElementById('appendix-c');
+
+        appendixC.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-c-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var appendixD = document.getElementById('appendix-d');
+
+        appendixD.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-d-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var appendixE = document.getElementById('appendix-e');
+
+        appendixE.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-e-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var appendixF = document.getElementById('appendix-f');
+
+        appendixF.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-f-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+
+        var appendixG = document.getElementById('appendix-g');
+
+        appendixG.onclick = function(){
+            event.preventDefault();
+            var content = document.getElementById("appendix-g-content");
+            content.style.display = content.style.display == "" || content.style.display == "none" ? "block" : "none";
+        };
+    };
+
 
 
    /* Alert boxes
@@ -395,7 +456,7 @@
         ssAlertBoxes();
         ssMoveTo();
         collapsibleChapters();
-
+        collapsibleAppendices();
     })();
 
 })(document.documentElement);
